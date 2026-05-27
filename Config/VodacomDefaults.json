@@ -1,0 +1,70 @@
+{
+  "sbcConfig": {
+    "sipPort": 5061,
+    "sbcFqdnTemplate": [
+      "{customerName}.mtb.msdr.teams.vodacom.co.za",
+      "{customerName}.cfo.msdr.teams.vodacom.co.za"
+    ]
+  },
+  "pstnUsage": {
+    "identity": "Global",
+    "usageName": "PSTN Usage for Teams DR VODA-HA-01-VR"
+  },
+  "voiceRoute": {
+    "identity": "Default-Voice-RouteVODA-HA-01-VR",
+    "numberPattern": ".*",
+    "priority": 1
+  },
+  "voiceRoutingPolicy": {
+    "identity": "Global"
+  },
+  "tenantDialPlan": {
+    "identity": "Global"
+  },
+  "normalizationRules": [
+    {
+      "name": "ZA-TollFree",
+      "pattern": "^0(80\\d{7})\\d*$",
+      "translation": "+27$1"
+    },
+    {
+      "name": "ZA-Premium",
+      "pattern": "^0(86[24-9]\\d{6})$",
+      "translation": "+27$1"
+    },
+    {
+      "name": "ZA-Mobile",
+      "pattern": "^0(([7]\\d{8}|8[1-5]\\d{7}))$",
+      "translation": "+27$1"
+    },
+    {
+      "name": "ZA-National",
+      "pattern": "^0(([1-5]\\d\\d|8[789]\\d|86[01])\\d{6})\\d*(\\D+\\d+)?$",
+      "translation": "+27$1"
+    },
+    {
+      "name": "ZA-Service",
+      "pattern": "^(1\\d{2,4})$",
+      "translation": "$1"
+    },
+    {
+      "name": "ZA-International",
+      "pattern": "^(?:\\+|00)(1|7|2[07]|3[0-46]|39\\d|4[013-9]|5[1-8]|6[0-6]|8[1246]|9[0-58]|2[1235689]\\d|24[013-9]|242\\d|3[578]\\d|42\\d|5[09]\\d|6[789]\\d|8[035789]\\d|9[679]\\d)(?:0)?(\\d{6,14})(\\D+\\d+)?$",
+      "translation": "+$1$2"
+    }
+  ],
+  "licensing": {
+    "teamsPhoneStandard": {
+      "skuPartNumber": "MCOEV",
+      "description": "Microsoft Teams Phone Standard"
+    },
+    "teamsPhoneResourceAccount": {
+      "skuPartNumber": "PHONESYSTEM_VIRTUALUSER",
+      "description": "Microsoft Teams Phone Resource Account"
+    }
+  },
+  "resourceAccountAppIds": {
+    "autoAttendant": "ce933385-9390-45d1-9512-c8d228086b72",
+    "callQueue": "11cd3e2e-fccb-42ad-ad00-878b93575e07"
+  }
+}

@@ -1,0 +1,3 @@
+DisplayName,UPN,Type,PhoneNumber
+RA_AA_MainLine,ra_aa_mainline@contoso.onmicrosoft.com,AutoAttendant,+27110001003
+RA_CQ_Support,ra_cq_support@contoso.onmicrosoft.com,CallQueue,

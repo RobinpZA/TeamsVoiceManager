@@ -1,0 +1,1 @@
+const Navbar={init(){document.querySelectorAll('.nav-item').forEach(i=>i.addEventListener('click',()=>{const p=i.dataset.page;if(p)App.navigateTo(p)}))},setActive(p){document.querySelectorAll('.nav-item').forEach(i=>i.classList.toggle('active',i.dataset.page===p))},setTenantName(n){document.getElementById('tenantName').textContent=n||'Not connected'}};

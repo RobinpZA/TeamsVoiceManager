@@ -1,0 +1,42 @@
+{
+    "agentSkills.skillRepositories": [
+        
+        {
+            "owner": "anthropics",
+            "repo": "skills",
+            "path": "skills",
+            "branch": "main"
+        },
+        {
+            "owner": "github",
+            "repo": "awesome-copilot",
+            "path": "skills",
+            "branch": "main"
+        },
+        {
+            "owner": "pytorch",
+            "repo": "pytorch",
+            "path": ".claude/skills",
+            "branch": "main"
+        },
+        {
+            "owner": "openai",
+            "repo": "skills",
+            "path": "skills/.curated",
+            "branch": "main"
+        },
+        {
+            "owner": "microsoftdocs",
+            "repo": "mcp",
+            "path": "skills",
+            "branch": "main"
+        },
+        {
+            "owner": "formulahendry",
+            "repo": "agent-skill-code-runner",
+            "path": ".github/skills/code-runner",
+            "branch": "main",
+            "singleSkill": true
+        }
+    ]
+}
