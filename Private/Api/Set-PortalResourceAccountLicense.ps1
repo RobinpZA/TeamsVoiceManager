@@ -1,6 +1,6 @@
 function Set-PortalResourceAccountLicense {
     [CmdletBinding()]
-    param([string]$ResourceAccountId)
+    param([string]$ResourceAccountId, [hashtable]$Body)
     try {
         $sku = Get-MgSubscribedSku -EA Stop | Where-Object { $_.SkuPartNumber -eq 'PHONESYSTEM_VIRTUALUSER' }
         if (-not $sku) { return @{success=$false;error='PHONESYSTEM_VIRTUALUSER SKU not found'} }

@@ -8,7 +8,8 @@ function Invoke-PortalBulkNumberAssignment {
         $upn = $a.UserPrincipalName
         $phone = Format-PhoneNumber -Number $a.PhoneNumber
         try {
-            Set-CsPhoneNumberAssignment -Identity $upn -PhoneNumber $phone -PhoneNumberType DirectRouting -EA Stop
+            $numberType = Resolve-PortalPhoneNumberType -PhoneNumber $phone
+            Set-CsPhoneNumberAssignment -Identity $upn -PhoneNumber $phone -PhoneNumberType $numberType -EA Stop | Out-Null
             $poolEntry = $script:NumberPool | Where-Object { $_.phoneNumber -eq $phone }
             if ($poolEntry) { $poolEntry.status = 'Assigned'; $poolEntry.assignedTo = $upn; $poolEntry.assignedDate = (Get-Date -Format 'yyyy-MM-dd HH:mm') }
             $results.succeeded++

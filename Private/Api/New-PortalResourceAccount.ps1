@@ -53,7 +53,8 @@ function New-PortalResourceAccount {
                     $elapsed += 2
                 }
                 $formattedPhone = Format-PhoneNumber -Number $phoneNumber
-                Set-CsPhoneNumberAssignment -Identity $upn -PhoneNumber $formattedPhone -PhoneNumberType DirectRouting -EA Stop
+                $numberType = Resolve-PortalPhoneNumberType -PhoneNumber $formattedPhone
+                Set-CsPhoneNumberAssignment -Identity $upn -PhoneNumber $formattedPhone -PhoneNumberType $numberType -EA Stop | Out-Null
                 $poolEntry = $script:NumberPool | Where-Object { $_.phoneNumber -eq $formattedPhone }
                 if ($poolEntry) { $poolEntry.status = 'Assigned'; $poolEntry.assignedTo = $upn; $poolEntry.assignedDate = (Get-Date -Format 'yyyy-MM-dd HH:mm') }
                 Write-AuditEntry -Action 'AssignPhoneRA' -Target $upn -Result 'Success' -Detail $formattedPhone

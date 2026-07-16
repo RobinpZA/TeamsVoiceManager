@@ -26,7 +26,8 @@ const CallQueuesPage={
             actions:[{label:'⟶ Flow',class:'btn-secondary',onClick:r=>CallFlowVisualizer.showCQ(r)}]});
         }catch(e){Toast.error(e.message)}
     },
-    showCreateForm(){
+    async showCreateForm(){
+        try{const raData=await API.getResourceAccounts();this.ras=(raData.accounts||[]).filter(r=>r.type==='CallQueue')}catch(e){}
         const raOpts=this.ras.map(r=>`<option value="${esc(r.objectId)}">${esc(r.displayName)}</option>`).join('');
         Modal.show('Create Call Queue',`
 <div style="background:var(--bg-overlay);border-left:3px solid var(--accent);padding:.6rem .8rem;border-radius:4px;margin-bottom:1rem;font-size:.85rem;color:var(--text-muted)">

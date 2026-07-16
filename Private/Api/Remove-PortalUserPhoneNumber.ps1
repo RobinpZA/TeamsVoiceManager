@@ -3,7 +3,8 @@ function Remove-PortalUserPhoneNumber {
     param([string]$UserId, [hashtable]$Body)
     $phone = Format-PhoneNumber -Number $Body.phoneNumber
     try {
-        Remove-CsPhoneNumberAssignment -Identity $UserId -PhoneNumber $phone -PhoneNumberType DirectRouting -EA Stop
+        $numberType = Resolve-PortalPhoneNumberType -PhoneNumber $phone
+        Remove-CsPhoneNumberAssignment -Identity $UserId -PhoneNumber $phone -PhoneNumberType $numberType -EA Stop | Out-Null
         $poolEntry = $script:NumberPool | Where-Object { $_.phoneNumber -eq $phone }
         if ($poolEntry) { $poolEntry.status = 'Available'; $poolEntry.assignedTo = $null; $poolEntry.assignedDate = $null }
         Write-AuditEntry -Action 'RemovePhone' -Target $UserId -Result 'Success' -Detail $phone

@@ -26,7 +26,11 @@ const AutoAttendantsPage={
         }catch(e){Toast.error(e.message)}
     },
     async showCreateWizard(){
-        try{const[l,t]=await Promise.all([API.getLanguages(),API.getTimezones()]);this.languages=l.languages||[];this.timezones=t.timezones||[]}catch(e){}
+        try{
+            const[l,t,raData]=await Promise.all([API.getLanguages(),API.getTimezones(),API.getResourceAccounts()]);
+            this.languages=l.languages||[];this.timezones=t.timezones||[];
+            this.ras=(raData.accounts||[]).filter(r=>r.type==='AutoAttendant');
+        }catch(e){}
         this._menuOpts=[];this._ahMenuOpts=[];this._holidays=[];
         const langOpts=this.languages.map(l=>`<option value="${esc(l.id)}" ${l.id==='en-ZA'?'selected':''}>${esc(l.displayName)}</option>`).join('');
         const tzOpts=this.timezones.map(t=>`<option value="${esc(t.id)}" ${t.id==='South Africa Standard Time'?'selected':''}>${esc(t.displayName)}</option>`).join('');
