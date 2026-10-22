@@ -3,7 +3,7 @@
     ModuleVersion     = '0.1.0'
     GUID              = 'a3f1c8e2-7b4d-4e6a-9f12-3c8d5e7a1b0f'
     Author            = 'Robin Pieterse'
-    CompanyName       = 'Turrito Networks'
+    CompanyName       = 'Robin Pieterse'
     Copyright         = '(c) 2026 Robin Pieterse. All rights reserved.'
     Description       = 'PowerShell module with embedded web portal for end-to-end Microsoft Teams Voice (Direct Routing) provisioning.'
     PowerShellVersion = '7.2'

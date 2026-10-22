@@ -313,7 +313,7 @@ Every write action performed through the portal is recorded to an in-memory audi
 - Detail (applied values or error message)
 
 The log is viewable in the **Audit Log** page in the portal. On portal exit, the module prompts to export the log as:
-- A **styled HTML report** — consistent with the other Turrito Networks reporting modules
+- A **styled HTML report** — consistent with the other reporting modules in this collection
 - A **CSV** — for import into ticketing systems or documentation
 
 Exported logs are written to `Output/AuditLogs/` (git-ignored).
@@ -334,7 +334,7 @@ Three CSV templates are included in the `Templates/` folder to assist with bulk 
 
 ## Author
 
-**Robin Pieterse** — Turrito Networks  
+**Robin Pieterse**  
 (c) 2026 Robin Pieterse. All rights reserved.
 
 
